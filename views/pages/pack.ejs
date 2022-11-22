@@ -1,0 +1,51 @@
+<div class="container">
+    <h4 class="fw-bold">Data Pack (Kemasan)</h4>
+    <hr>
+    <ul class="list-group my-2">
+        <% data.forEach(Pack=> { %>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <small class="text-success">Nama Pack</small> <br />
+                        <%= Pack.nama_pack %>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <small class="text-success">Harga</small> <br />
+                        Rp <%= Pack.harga %>
+
+                    </div>
+
+
+                    <div class="col-lg-2">
+                        <small class="text-success">Action</small> <br />
+
+                        <!-- button edit -->
+                        <a href="/pack/edit/<%= Pack.id %>">
+                            <button class="btn btn-sm btn-warning fw-semibold">
+                                Edit
+                            </button>
+                        </a>
+
+                        <!-- button delete -->
+                        <a href="/pack/delete/<%= Pack.id %>"
+                            onclick="return confirm(`Apakah Anda yakin ingin menghapus data ini?`)">
+                            <button class="btn btn-sm btn-danger fw-semibold">
+                                Hapus
+                            </button>
+                        </a>
+
+                    </div>
+                </div>
+            </li>
+            <% }) %>
+    </ul>
+
+    <!-- button add new data -->
+    <a href="/pack/add">
+        <button class="btn btn-md btn-warning">
+            Tambah Data
+        </button>
+    </a>
+
+</div>

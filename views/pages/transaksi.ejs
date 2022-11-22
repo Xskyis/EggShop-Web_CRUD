@@ -1,0 +1,131 @@
+<div class="container" style="margin-bottom: 60px;">
+    <h3 class="text-dark fw-bold">List Transaksi <span class="fs-5"><small>(newest always on top)</small></span></h3>
+    <hr>
+
+    <ul class="list-group">
+        <% transaksi.forEach(element=> { %>
+            <li class="list-group-item bg-warning">
+                <div class="row">
+                    <!-- are tgl transaksi-->
+                    <div class="col-lg-4">
+                        <small class="fw-bold" style="font-size: 16px;">Tgl. Transaksi</small>
+                        <h6>
+                            <%= element.tgl_transaksi %>
+                        </h6>
+                    </div>
+
+                    <!-- are utk nama cutomer -->
+                    <div class="col-lg-2">
+                        <small class="fw-bold" style="font-size: 16px;">Nama Member</small>
+                        <h6 class="text-danger">
+                            <%= element.nama_member %>
+                        </h6>
+                    </div>
+
+                    <!-- are utk nama apotker -->
+                    <div class="col-lg-3">
+                        <small class="fw-bold" style="font-size: 16px;">Nama Admin</small>
+                        <h6>
+                            <%= element.nama_admin %>
+                        </h6>
+                    </div>
+                    <div class="col-lg-1">
+                        <!-- Tombol utk Hapus -->
+                        <small class="fw-bold" style="font-size: 16px;">Action</small>
+                        <a href="/transaksi/<%= element.id %>" onclick="return confirm(`Apakah Anda yakin ingin menghapus data ini?`)">
+                            <button class="btn btn-sm btn-danger fw-semibold">
+                               Hapus
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <h5 class="text-black fw-semibold mt-2">Daftar Pembelian</h5>
+                <ul class="list-group mb-1">    
+                    <% element.detail.forEach(item=> { %>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <!-- area nama obat-->
+                                <div class="col-lg-3">
+                                    <small class="text-black fw-semibold">Jenis Telur</small>
+                                    <h6>
+                                        <%= item.jenis_telur %>
+                                    </h6>
+                                </div>
+
+                                <!-- are jumlah beli-->
+                                <div class="col-lg-3">
+                                    <small class="text-black fw-semibold">Jumlah Beli</small>
+                                    <h6>
+                                        <%= item.jumlah_telur %>
+                                    </h6>
+                                </div>
+
+                                <!-- are harga beli-->
+                                <div class="col-lg-3">
+                                    <small class="text-black fw-semibold">Harga Beli</small>
+                                    <h6>
+                                        Rp.<%= item.harga_telur %>
+                                    </h6>
+                                </div>
+
+                                <!-- are harga total-->
+                                <div class="col-lg-3">
+                                    <small class="text-black fw-semibold">Harga Total Telur</small>
+                                    <h6>
+                                        Rp.<%= item.jumlah_telur * item.harga_telur %>
+                                    </h6>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- area nama obat-->
+                                <div class="col-lg-3">
+                                    <small class="text-black fw-semibold">Jenis Pack</small>
+                                    <h6>
+                                        <%= item.nama_pack %>
+                                    </h6>
+                                </div>
+
+                                <!-- are jumlah beli-->
+                                <div class="col-lg-3">
+                                    <small class="text-black fw-semibold">Jumlah Beli</small>
+                                    <h6>
+                                        <%= item.jumlah_pack %>
+                                    </h6>
+                                </div>
+
+                                <!-- are harga beli-->
+                                <div class="col-lg-3">
+                                    <small class="text-black fw-semibold">Harga Beli</small>
+                                    <h6>
+                                        Rp.<%= item.harga_pack %>
+                                    </h6>
+                                </div>
+
+                                <!-- are harga total-->
+                                <div class="col-lg-3">
+                                    <small class="text-black fw-semibold">Harga Total Pack</small>
+                                    <h6>
+                                        Rp.<%= item.jumlah_pack * item.harga_pack %>
+                                    </h6>
+                                </div>
+                            </div>
+
+                            <div class="row">   
+                                <!-- are harga total-->
+                                <div class="col-lg-12 justify-content-  ">
+                                    <div class="col-lg-3">  
+                                        <small class="text-black fw-bold" style="font-size: 16px;">Total Keseluruhan</small>
+                                        <h6>
+                                        Rp.<%= item.jumlah_pack * item.harga_pack + item.jumlah_telur * item.harga_telur %>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </li>
+        <% }) %>
+    </ul>
+</div>
